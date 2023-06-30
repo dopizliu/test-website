@@ -1,22 +1,73 @@
 <html>
-    <body>
-        <h2><span id='date-time'></span></h2>
-        <iframe 
-            width=100%
-            height=90%
-            src="https://www.youtube.com/embed/dMTy6C4UiQ4?list=PL0NFq6XxTI_f2k3vf2FusEA8E2I1H3-Nw"
-            frameborder="0" 
-            allowfullscreen
-        >
+<header>
+    <title>Dopiz Test Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: black;
+            height: 100vh;
+            display: flex;
+            flex-flow: column;
+        }
+
+        .clock {
+            justify-content: center;
+            display: flex;
+            color: rgb(53, 85, 189);
+            font-size: 50px;
+            font-family: 'Monomaniac One', sans-serif;
+            letter-spacing: 5px;
+        }
+
+        .player {
+            flex: 1;
+        }
+    </style>
+</header>
+
+<body>
+    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+    <div class="player">
+        <iframe
+            src="https://www.youtube.com/embed/7HaJArMDKgI?list=PL0NFq6XxTI_f2k3vf2FusEA8E2I1H3-Nw&autoplay=1&loop=1&mute=1&enablejsapi=1"
+            allow="autoplay" frameborder="0" width="100%" height="100%">
         </iframe>
-    </body>
-    <script>
-        function refreshTime() {
-                const timeDisplay = document.getElementById("date-time");
-                const dateString = new Date().toLocaleString();
-                const formattedString = dateString.replace(", ", " - ");
-                timeDisplay.textContent = formattedString;
-            }
-            setInterval(refreshTime, 1000);
-    </script>
+    </div>
+
+</body>
+<script>
+    function showTime() {
+        var date = new Date();
+        var datetime = date.toLocaleDateString()
+        var Y = date.getFullYear()
+        var M = date.getMonth() + 1
+        var D = date.getDate()
+        var W = date.getDay().toLocaleString()
+        M = (M < 10) ? "0" + M : M;
+        D = (D < 10) ? "0" + D : D;
+
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+        var s = date.getSeconds(); // 0 - 59
+        var session = "AM";
+        if (h == 0) {
+            h = 12;
+        }
+        if (h > 12) {
+            h = h - 12;
+            session = "PM";
+        }
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+        var time = Y + "/" + M + "/" + D + "　" + h + ":" + m + ":" + s + " " + session;
+        document.getElementById("MyClockDisplay").innerText = time;
+        document.getElementById("MyClockDisplay").textContent = time;
+        setTimeout(showTime, 1000);
+    }
+    showTime();
+</script>
+
 </html>
