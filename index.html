@@ -25,11 +25,61 @@
             flex: 1;
             padding-bottom: 1%;
         }
+
+        a {
+            color: aliceblue;
+        }
+
+        .btn {
+            border: none;
+            font-family: inherit;
+            font-size: inherit;
+            color: inherit;
+            background: none;
+            cursor: pointer;
+            padding: 10px 80px;
+            display: inline-block;
+            margin: 15px 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            outline: none;
+            position: relative;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .btn:after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        /* Button 1 */
+        .btn-1 {
+            border: 3px solid #fff;
+            color: #fff;
+        }
+
+        /* Button 1a */
+        .btn-1a:hover,
+        .btn-1a:active {
+            color: #0e83cd;
+            background: #fff;
+        }
     </style>
 </header>
 
 <body>
     <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+    <div>
+        <button class="btn btn-1 btn-1a" onclick="vehicleVideo()">Vehicle</button>
+        <button class="btn btn-1 btn-1a" onclick="personVideo()">Person</button>
+    </div>
     <div class="player">
         <iframe id="Playlist" allow="autoplay" frameborder="0" width="100%" height="100%">
         </iframe>
@@ -37,8 +87,17 @@
 
 </body>
 <script>
+    function personVideo() {
+        const url = "https://www.youtube.com/embed/TmW-0jfHdeQ?playlist=TmW-0jfHdeQ&autoplay=1&loop=1&mute=1&enablejsapi=1";
+        document.getElementById('Playlist').src = url;
+    }
+    function vehicleVideo() {
+        const url = "https://www.youtube.com/embed/7HaJArMDKgI?playlist=7HaJArMDKgI&autoplay=1&loop=1&mute=1&enablejsapi=1";
+        document.getElementById('Playlist').src = url;
+    }
     function randomFirstVideo() {
-        const playlist = ["TmW-0jfHdeQ", "7HaJArMDKgI", "QI4_dGvZ5yE", "Slj8wJljOlM", "jTyfIV2wres"];
+        // 7HaJArMDKgI 車牌 TmW-0jfHdeQ 人
+        const playlist = ["TmW-0jfHdeQ", "7HaJArMDKgI", "jTyfIV2wres"];
         const random = Math.floor(Math.random() * playlist.length);
         return "https://www.youtube.com/embed/" + playlist[random] + "?list=PL0NFq6XxTI_f2k3vf2FusEA8E2I1H3-Nw&autoplay=1&loop=1&mute=1&enablejsapi=1";
     }
