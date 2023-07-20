@@ -37,7 +37,7 @@
             color: inherit;
             background: none;
             cursor: pointer;
-            padding: 10px 80px;
+            padding: 10px 40px;
             display: inline-block;
             margin: 15px 30px;
             text-transform: uppercase;
@@ -48,6 +48,8 @@
             -webkit-transition: all 0.3s;
             -moz-transition: all 0.3s;
             transition: all 0.3s;
+            border: 3px solid rgb(255, 249, 220);
+            color: rgb(255, 249, 220);
         }
 
         .btn:after {
@@ -59,17 +61,10 @@
             transition: all 0.3s;
         }
 
-        /* Button 1 */
-        .btn-1 {
-            border: 3px solid #fff;
-            color: #fff;
-        }
-
-        /* Button 1a */
-        .btn-1a:hover,
-        .btn-1a:active {
-            color: #0e83cd;
-            background: #fff;
+        .btn:hover,
+        .btn:active {
+            color: #797979;
+            background: rgb(255, 249, 220);
         }
     </style>
 </header>
@@ -77,8 +72,10 @@
 <body>
     <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
     <div>
-        <button class="btn btn-1 btn-1a" onclick="vehicleVideo()">Vehicle</button>
-        <button class="btn btn-1 btn-1a" onclick="personVideo()">Person</button>
+        <button class="btn" onclick="randomVideo()">Random</button>
+        <button class="btn" onclick="vehicleVideo()">Vehicle</button>
+        <button class="btn" onclick="personVideo()">Person</button>
+        <button class="btn" onclick="animalVideo()">Animal</button>
     </div>
     <div class="player">
         <iframe id="Playlist" allow="autoplay" frameborder="0" width="100%" height="100%">
@@ -88,18 +85,27 @@
 </body>
 <script>
     function personVideo() {
+        localStorage.setItem('type', 'Person');
         const url = "https://www.youtube.com/embed/TmW-0jfHdeQ?playlist=TmW-0jfHdeQ&autoplay=1&loop=1&mute=1&enablejsapi=1";
         document.getElementById('Playlist').src = url;
     }
     function vehicleVideo() {
+        localStorage.setItem('type', 'Vehicle');
         const url = "https://www.youtube.com/embed/7HaJArMDKgI?playlist=7HaJArMDKgI&autoplay=1&loop=1&mute=1&enablejsapi=1";
         document.getElementById('Playlist').src = url;
     }
-    function randomFirstVideo() {
-        // 7HaJArMDKgI 車牌 TmW-0jfHdeQ 人
-        const playlist = ["TmW-0jfHdeQ", "7HaJArMDKgI", "jTyfIV2wres"];
+    function animalVideo() {
+        localStorage.setItem('type', 'Animal');
+        const url = "https://www.youtube.com/embed/JuQLtbBZKxg?playlist=7HaJArMDKgI&autoplay=1&loop=1&mute=1&enablejsapi=1";
+        document.getElementById('Playlist').src = url;
+    }
+    function randomVideo() {
+        // 7HaJArMDKgI 車牌 TmW-0jfHdeQ 人 PN5PPjruA94 狗
+        localStorage.setItem('type', null);
+        const playlist = ["TmW-0jfHdeQ", "7HaJArMDKgI", "jTyfIV2wres", "JuQLtbBZKxg"];
         const random = Math.floor(Math.random() * playlist.length);
-        return "https://www.youtube.com/embed/" + playlist[random] + "?list=PL0NFq6XxTI_f2k3vf2FusEA8E2I1H3-Nw&autoplay=1&loop=1&mute=1&enablejsapi=1";
+        const url = "https://www.youtube.com/embed/" + playlist[random] + "?list=PL0NFq6XxTI_f2k3vf2FusEA8E2I1H3-Nw&autoplay=1&loop=1&mute=1&enablejsapi=1";
+        document.getElementById('Playlist').src = url;
     }
     function showTime() {
         var date = new Date();
@@ -127,7 +133,17 @@
         setTimeout(showTime, 1000);
     }
     window.onload = function () {
-        document.getElementById('Playlist').src = randomFirstVideo();
+        var type = localStorage.getItem('type');
+        console.log("Previous Type: " + type)
+        if (type === "Vehicle") {
+            vehicleVideo();
+        } else if (type == "Person") {
+            personVideo();
+        } else if (type == "Animal") {
+            animalVideo();
+        } else {
+            randomVideo();
+        }
         showTime();
     }
 
