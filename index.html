@@ -16,9 +16,9 @@
             justify-content: center;
             display: flex;
             color: rgb(255, 249, 220);
-            font-size: 50px;
+            font-size: 30px;
             font-family: 'Monomaniac One', sans-serif;
-            letter-spacing: 8px;
+            letter-spacing: 4px;
         }
 
         .player {
@@ -37,9 +37,9 @@
             color: inherit;
             background: none;
             cursor: pointer;
-            padding: 10px 40px;
+            padding: 5px 40px;
             display: inline-block;
-            margin: 15px 30px;
+            margin: 5px 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 700;
@@ -48,7 +48,7 @@
             -webkit-transition: all 0.3s;
             -moz-transition: all 0.3s;
             transition: all 0.3s;
-            border: 3px solid rgb(255, 249, 220);
+            border: 1px solid rgb(255, 249, 220);
             color: rgb(255, 249, 220);
         }
 
@@ -71,7 +71,7 @@
 
 <body>
     <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
-    <div>
+    <div style="text-align:center;">
         <button class="btn" onclick="randomVideo()">Random</button>
         <button class="btn" onclick="vehicleVideo()">Vehicle</button>
         <button class="btn" onclick="personVideo()">Person</button>
