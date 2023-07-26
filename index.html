@@ -76,6 +76,7 @@
         <button class="btn" onclick="vehicleVideo()">Vehicle</button>
         <button class="btn" onclick="personVideo()">Person</button>
         <button class="btn" onclick="animalVideo()">Animal</button>
+        <button class="btn" onclick="kentingVideo()">KenTing</button>
     </div>
     <div class="player">
         <iframe id="Playlist" allow="autoplay" frameborder="0" width="100%" height="100%">
@@ -84,6 +85,11 @@
 
 </body>
 <script>
+    function kentingVideo() {
+        localStorage.setItem('type', 'KenTing');
+        const url = "https://www.youtube.com/embed/EfJ-6N9P4tw?autoplay=1&loop=1&mute=1&enablejsapi=1";
+        document.getElementById('Playlist').src = url;
+    }
     function personVideo() {
         localStorage.setItem('type', 'Person');
         const url = "https://www.youtube.com/embed/TmW-0jfHdeQ?playlist=TmW-0jfHdeQ&autoplay=1&loop=1&mute=1&enablejsapi=1";
@@ -141,6 +147,8 @@
             personVideo();
         } else if (type == "Animal") {
             animalVideo();
+        } else if (type == "KenTing") {
+            kentingVideo();
         } else {
             randomVideo();
         }
