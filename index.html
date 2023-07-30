@@ -77,6 +77,7 @@
         <button class="btn" onclick="personVideo()">Person</button>
         <button class="btn" onclick="animalVideo()">Animal</button>
         <button class="btn" onclick="kentingVideo()">KenTing</button>
+        <button class="btn" onclick="taiTungVideo()">TaiTung</button>
     </div>
     <div class="player">
         <iframe id="Playlist" allow="autoplay" frameborder="0" width="100%" height="100%">
@@ -86,22 +87,27 @@
 </body>
 <script>
     function kentingVideo() {
-        localStorage.setItem('type', 'KenTing');
+        localStorage.setItem('type', 'kenting');
         const url = "https://www.youtube.com/embed/EfJ-6N9P4tw?autoplay=1&loop=1&mute=1&enablejsapi=1";
         document.getElementById('Playlist').src = url;
     }
+    function taiTungVideo() {
+        localStorage.setItem('type', 'taitung');
+        const url = "https://www.youtube.com/embed/9QqBz3kNHis?autoplay=1&loop=1&mute=1&enablejsapi=1";
+        document.getElementById('Playlist').src = url;
+    }
     function personVideo() {
-        localStorage.setItem('type', 'Person');
+        localStorage.setItem('type', 'person');
         const url = "https://www.youtube.com/embed/TmW-0jfHdeQ?playlist=TmW-0jfHdeQ&autoplay=1&loop=1&mute=1&enablejsapi=1";
         document.getElementById('Playlist').src = url;
     }
     function vehicleVideo() {
-        localStorage.setItem('type', 'Vehicle');
+        localStorage.setItem('type', 'vehicle');
         const url = "https://www.youtube.com/embed/7HaJArMDKgI?playlist=7HaJArMDKgI&autoplay=1&loop=1&mute=1&enablejsapi=1";
         document.getElementById('Playlist').src = url;
     }
     function animalVideo() {
-        localStorage.setItem('type', 'Animal');
+        localStorage.setItem('type', 'animal');
         const url = "https://www.youtube.com/embed/JuQLtbBZKxg?playlist=JuQLtbBZKxg&autoplay=1&loop=1&mute=1&enablejsapi=1";
         document.getElementById('Playlist').src = url;
     }
@@ -138,17 +144,35 @@
         document.getElementById("MyClockDisplay").textContent = time;
         setTimeout(showTime, 1000);
     }
+
     window.onload = function () {
-        var type = localStorage.getItem('type');
-        console.log("Previous Type: " + type)
-        if (type === "Vehicle") {
+        var url = location.href;
+
+        if (url.indexOf('?') != -1) {
+            var type = "";
+            var ary = url.split('?')[1].split('&');
+            for (i = 0; i <= ary.length - 1; i++) {
+                if (ary[i].split('=')[0] == 'type')
+                    type = ary[i].split('=')[1];
+            }
+            console.log("Specific Type: " + type)
+        }
+        else {
+            var type = localStorage.getItem('type');
+            console.log("Previous Type: " + type)
+        }
+
+        type = type.toLowerCase()
+        if (type === "vehicle") {
             vehicleVideo();
-        } else if (type == "Person") {
+        } else if (type == "person") {
             personVideo();
-        } else if (type == "Animal") {
+        } else if (type == "animal") {
             animalVideo();
-        } else if (type == "KenTing") {
+        } else if (type == "kenting") {
             kentingVideo();
+        } else if (type == "taitung") {
+            taiTungVideo();
         } else {
             randomVideo();
         }
