@@ -83,9 +83,98 @@
         <iframe id="Playlist" allow="autoplay" frameborder="0" width="100%" height="100%">
         </iframe>
     </div>
+    <div>
+        <div style="text-align:center; margin-bottom: 1%;">
+            <audio id="Audio" controls>
+                <source src="./co/first_alert_talking_co_alarm_pattern.wav" type="audio/wav">
+            </audio>
+        </div>
 
+        <div style="text-align:center;">
+            <button class="btn" onclick="babycry()">Baby Cry</button>
+            <button class="btn" onclick="caralarm()">Car Alarm</button>
+            <button class="btn" onclick="carhorn()">Carhorn</button>
+            <button class="btn" onclick="co()">CO Alarm</button>
+        </div>
+        <div style="text-align:center;">
+            <button class="btn" onclick="dogbark()">Dogbark</button>
+            <button class="btn" onclick="glassbreak()">Glass Break</button>
+            <button class="btn" onclick="siren()">Siren</button>
+            <button class="btn" onclick="smoke()">Smoke Alarm</button>
+            <button class="btn" onclick="speak()">Speak</button>
+        </div>
+    </div>
 </body>
 <script>
+    // Audio
+    function babycry() {
+        const playlist = ["G0001S0001_0_10.wav", "G0001S0002_0_10.wav", "G0001S0003_0_10.wav"];
+        const random = Math.floor(Math.random() * playlist.length);
+        document.getElementById('Audio').src = "./babycry/" + playlist[random];
+        document.getElementById('Audio').play();
+    }
+    function caralarm() {
+        const playlist = [
+            // "car-alarm-sound-effect-free-download-0-ts1-snr15-rt0_5.wav",
+            // "car-alarm-sound-effect-free-download-0-ts3-snrNone-rtNone.wav",
+            "car-alarm-sound-effect-free-download-2-tsNone-snrNone-rtNone.wav"
+        ];
+        const random = Math.floor(Math.random() * playlist.length);
+        document.getElementById('Audio').src = "./caralarm/" + playlist[random];
+        document.getElementById('Audio').play();
+    }
+    function carhorn() {
+        const playlist = ["1-28808-A-43.wav", "2-125520-A-43.wav", "5-180156-B-43.wav"];
+        const random = Math.floor(Math.random() * playlist.length);
+        document.getElementById('Audio').src = "./carhorn/" + playlist[random];
+        document.getElementById('Audio').play();
+    }
+    function co() {
+        const playlist = [
+            "first_alert_talking_co_alarm_pattern.wav",
+            "Kidde_CO_Alarm_pattern.wav",
+            "nest_protect_co_alarm.wav"
+        ];
+        const random = Math.floor(Math.random() * playlist.length);
+        document.getElementById('Audio').src = "./co/" + playlist[random];
+        document.getElementById('Audio').play();
+    }
+    function dogbark() {
+        const playlist = ["3-155312-A-0.wav", "5-203128-A-0.wav", "10413-killer-dog-barks-0.wav"];
+        const random = Math.floor(Math.random() * playlist.length);
+        document.getElementById('Audio').src = "./dogbark/" + playlist[random];
+        document.getElementById('Audio').play();
+    }
+    function glassbreak() {
+        const playlist = ["001-0.wav", "002-0.wav", "004-0.wav"];
+        const random = Math.floor(Math.random() * playlist.length);
+        document.getElementById('Audio').src = "./glassbreak/" + playlist[random];
+        document.getElementById('Audio').play();
+    }
+    function siren() {
+        const playlist = ["policecar-2-45.wav", "policecar-2-46.wav", "policecar-2-47.wav"];
+        const random = Math.floor(Math.random() * playlist.length);
+        document.getElementById('Audio').src = "./siren/" + playlist[random];
+        document.getElementById('Audio').play();
+    }
+    function smoke() {
+        const playlist = [
+            "first_alert_talking_smoke_alarm_pattern.wav",
+            "Kidde_Smoke_Alarm_pattern.wav",
+            "nest_protect_smoke_alarm.wav"
+        ];
+        const random = Math.floor(Math.random() * playlist.length);
+        document.getElementById('Audio').src = "./smoke/" + playlist[random];
+        document.getElementById('Audio').play();
+    }
+    function speak() {
+        const playlist = ["8288-274162-0000.wav", "8288-274162-0001.wav", "8288-274162-0002.wav"];
+        const random = Math.floor(Math.random() * playlist.length);
+        document.getElementById('Audio').src = "./speak/" + playlist[random];
+        document.getElementById('Audio').play();
+    }
+
+    // Video
     function kentingVideo() {
         localStorage.setItem('type', 'kenting');
         const url = "https://www.youtube.com/embed/EfJ-6N9P4tw?autoplay=1&loop=1&mute=1&enablejsapi=1";
