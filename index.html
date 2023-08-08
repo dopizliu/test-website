@@ -7,7 +7,14 @@
     <style>
         body {
             background: black;
-            height: 115vh;
+            /* height: 200vh; */
+            display: flex;
+            flex-flow: column;
+        }
+
+        .page {
+            background: black;
+            height: 100vh;
             display: flex;
             flex-flow: column;
         }
@@ -70,26 +77,27 @@
 </header>
 
 <body>
-    <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
-    <div style="text-align:center;">
-        <button class="btn" onclick="randomVideo()">Random</button>
-        <button class="btn" onclick="vehicleVideo()">Vehicle</button>
-        <button class="btn" onclick="personVideo()">Person</button>
-        <button class="btn" onclick="animalVideo()">Animal</button>
-        <button class="btn" onclick="kentingVideo()">KenTing</button>
-        <button class="btn" onclick="taiTungVideo()">TaiTung</button>
+    <div class="page">
+        <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+        <div style="text-align:center;">
+            <button class="btn" onclick="randomVideo()">Random</button>
+            <button class="btn" onclick="vehicleVideo()">Vehicle</button>
+            <button class="btn" onclick="personVideo()">Person</button>
+            <button class="btn" onclick="animalVideo()">Animal</button>
+            <button class="btn" onclick="kentingVideo()">KenTing</button>
+            <button class="btn" onclick="taiTungVideo()">TaiTung</button>
+        </div>
+        <div class="player">
+            <iframe id="Playlist" allow="autoplay" frameborder="0" width="100%" height="100%">
+            </iframe>
+        </div>
     </div>
-    <div class="player">
-        <iframe id="Playlist" allow="autoplay" frameborder="0" width="100%" height="100%">
-        </iframe>
-    </div>
-    <div>
+    <div class="page">
         <div style="text-align:center; margin-bottom: 1%;">
             <audio id="Audio" controls>
                 <source src="./co/first_alert_talking_co_alarm_pattern.wav" type="audio/wav">
             </audio>
         </div>
-
         <div style="text-align:center;">
             <button class="btn" onclick="babycry()">Baby Cry</button>
             <button class="btn" onclick="caralarm()">Car Alarm</button>
