@@ -78,7 +78,7 @@
 
 <body>
     <div class="page">
-        <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+        <!-- <div id="MyClockDisplay" class="clock" onload="showTime()"></div> -->
         <div style="text-align:center;">
             <button class="btn" onclick="randomVideo()">Random</button>
             <button class="btn" onclick="vehicleVideo()">Vehicle</button>
@@ -93,7 +93,7 @@
         </div>
     </div>
     <div class="page">
-        <div style="text-align:center; margin-bottom: 1%;">
+        <div style="text-align:center; margin: 2%;">
             <audio id="Audio" controls>
                 <source src="./co/first_alert_talking_co_alarm_pattern.wav" type="audio/wav">
             </audio>
@@ -123,8 +123,6 @@
     }
     function caralarm() {
         const playlist = [
-            // "car-alarm-sound-effect-free-download-0-ts1-snr15-rt0_5.wav",
-            // "car-alarm-sound-effect-free-download-0-ts3-snrNone-rtNone.wav",
             "car-alarm-sound-effect-free-download-2-tsNone-snrNone-rtNone.wav"
         ];
         const random = Math.floor(Math.random() * playlist.length);
@@ -216,31 +214,31 @@
         const url = "https://www.youtube.com/embed/" + playlist[random] + "?list=PL0NFq6XxTI_f2k3vf2FusEA8E2I1H3-Nw&autoplay=1&loop=1&mute=1&enablejsapi=1";
         document.getElementById('Playlist').src = url;
     }
-    function showTime() {
-        var date = new Date();
-        var datetime = date.toLocaleDateString()
-        var Y = date.getFullYear()
-        var M = date.getMonth() + 1
-        var D = date.getDate()
-        var W = date.getDay().toLocaleString()
-        M = (M < 10) ? "0" + M : M;
-        D = (D < 10) ? "0" + D : D;
+    // function showTime() {
+    //     var date = new Date();
+    //     var datetime = date.toLocaleDateString()
+    //     var Y = date.getFullYear()
+    //     var M = date.getMonth() + 1
+    //     var D = date.getDate()
+    //     var W = date.getDay().toLocaleString()
+    //     M = (M < 10) ? "0" + M : M;
+    //     D = (D < 10) ? "0" + D : D;
 
-        var h = date.getHours(); // 0 - 23
-        var m = date.getMinutes(); // 0 - 59
-        var s = date.getSeconds(); // 0 - 59
-        var session = "AM";
-        if (h >= 12) {
-            session = "PM";
-        }
-        h = (h < 10) ? "0" + h : h;
-        m = (m < 10) ? "0" + m : m;
-        s = (s < 10) ? "0" + s : s;
-        var time = Y + "/" + M + "/" + D + " - " + h + ":" + m + ":" + s + " " + session;
-        document.getElementById("MyClockDisplay").innerText = time;
-        document.getElementById("MyClockDisplay").textContent = time;
-        setTimeout(showTime, 1000);
-    }
+    //     var h = date.getHours(); // 0 - 23
+    //     var m = date.getMinutes(); // 0 - 59
+    //     var s = date.getSeconds(); // 0 - 59
+    //     var session = "AM";
+    //     if (h >= 12) {
+    //         session = "PM";
+    //     }
+    //     h = (h < 10) ? "0" + h : h;
+    //     m = (m < 10) ? "0" + m : m;
+    //     s = (s < 10) ? "0" + s : s;
+    //     var time = Y + "/" + M + "/" + D + " - " + h + ":" + m + ":" + s + " " + session;
+    //     document.getElementById("MyClockDisplay").innerText = time;
+    //     document.getElementById("MyClockDisplay").textContent = time;
+    //     setTimeout(showTime, 1000);
+    // }
 
     window.onload = function () {
         var url = location.href;
