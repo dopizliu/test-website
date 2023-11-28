@@ -203,7 +203,10 @@
     }
     function animalVideo() {
         localStorage.setItem('type', 'animal');
-        const url = "https://www.youtube.com/embed/JuQLtbBZKxg?playlist=JuQLtbBZKxg&autoplay=1&loop=1&mute=1&enablejsapi=1";
+        const playlist = ["d-Udnb7EX-Q", "JuQLtbBZKxg", "auUErwN95_A"];
+        const random = Math.floor(Math.random() * playlist.length);
+        const url = "https://www.youtube.com/embed/" + playlist[random] + "?playlist=" + playlist[random] + "&autoplay=1&loop=1&mute=1&enablejsapi=1";
+        console.log(url)
         document.getElementById('Playlist').src = url;
     }
     function randomVideo() {
