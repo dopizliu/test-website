@@ -80,11 +80,10 @@
     <div class="page">
         <!-- <div id="MyClockDisplay" class="clock" onload="showTime()"></div> -->
         <div style="text-align:center;">
-            <button class="btn" onclick="randomVideo()">Random</button>
             <button class="btn" onclick="vehicleVideo()">Vehicle</button>
             <button class="btn" onclick="personVideo()">Person</button>
             <button class="btn" onclick="animalVideo()">Animal</button>
-            <button class="btn" onclick="daxiVideo()">DaXi</button>
+            <button class="btn" onclick="faceVideo()">Face</button>
             <button class="btn" onclick="taiTungVideo()">TaiTung</button>
         </div>
         <div class="player">
@@ -181,11 +180,6 @@
     }
 
     // Video
-    function daxiVideo() {
-        localStorage.setItem('type', 'daxi');
-        const url = "https://www.youtube.com/embed/_sYLZCQR_UI?autoplay=1&loop=1&mute=1&enablejsapi=1";
-        document.getElementById('Playlist').src = url;
-    }
     function taiTungVideo() {
         localStorage.setItem('type', 'taitung');
         const url = "https://www.youtube.com/embed/9QqBz3kNHis?autoplay=1&loop=1&mute=1&enablejsapi=1";
@@ -201,20 +195,17 @@
         const url = "https://www.youtube.com/embed/7HaJArMDKgI?playlist=7HaJArMDKgI&autoplay=1&loop=1&mute=1&enablejsapi=1";
         document.getElementById('Playlist').src = url;
     }
+    function faceVideo() {
+        localStorage.setItem('type', 'face');
+        const url = "https://www.youtube.com/embed/gFRtAAmiFbE?autoplay=1&loop=1&mute=1&enablejsapi=1";
+        document.getElementById('Playlist').src = url;
+    }
     function animalVideo() {
         localStorage.setItem('type', 'animal');
-        const playlist = ["d-Udnb7EX-Q", "JuQLtbBZKxg", "auUErwN95_A"];
+        const playlist = ["d-Udnb7EX-Q", "auUErwN95_A"];
         const random = Math.floor(Math.random() * playlist.length);
         const url = "https://www.youtube.com/embed/" + playlist[random] + "?playlist=" + playlist[random] + "&autoplay=1&loop=1&mute=1&enablejsapi=1";
         console.log(url)
-        document.getElementById('Playlist').src = url;
-    }
-    function randomVideo() {
-        // 7HaJArMDKgI 車牌 TmW-0jfHdeQ 人 PN5PPjruA94 狗
-        localStorage.setItem('type', null);
-        const playlist = ["TmW-0jfHdeQ", "7HaJArMDKgI", "jTyfIV2wres", "JuQLtbBZKxg"];
-        const random = Math.floor(Math.random() * playlist.length);
-        const url = "https://www.youtube.com/embed/" + playlist[random] + "?list=PL0NFq6XxTI_f2k3vf2FusEA8E2I1H3-Nw&autoplay=1&loop=1&mute=1&enablejsapi=1";
         document.getElementById('Playlist').src = url;
     }
     // function showTime() {
@@ -267,12 +258,10 @@
             personVideo();
         } else if (type == "animal") {
             animalVideo();
-        } else if (type == "daxi") {
-            daxiVideo();
-        } else if (type == "taitung") {
-            taiTungVideo();
+        } else if (type == "face") {
+            faceVideo();
         } else {
-            randomVideo();
+            taiTungVideo();
         }
         showTime();
     }
